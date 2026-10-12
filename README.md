@@ -12,8 +12,3 @@
    - 勾選 Scopes：`repo`（完整存取倉庫）、`workflow`（選用）
    - 點擊「Generate token」→ **立即複製 Token**（離開頁面後無法再查看）
 
-2. **在 SourceTree 加入 GitHub 帳號**：
-   - SourceTree 上方選單：Tools → Options
-   - 切換到「Authentication」分頁
-   - 點擊「Add」按鈕
-   - 點擊「OK」
