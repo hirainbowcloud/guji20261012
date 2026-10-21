@@ -1,0 +1,1 @@
+請依據 StudentService StudentController 幫我製作Product Model的 Service 和Controller
