@@ -11,4 +11,9 @@ INSERT INTO products (name, price, stock, category_id) VALUES
   ('iPhone 15 Pro',  39999.0, 20, 2),
   ('iPad Air',       24999.0, 15, 1),
   ('AirPods Pro',    7999.0,  50, 3),
-  ('Magic Keyboard', 3999.0,  30, 3);
+  ('Magic Keyboard', 3999.0,  30, 3),
+  ('MacBook Pro 16', 89999.0, 55,  1),
+  ('iPhone 17 Pro',  49999.0, 30, 2),
+  ('iPad Air 2',     34999.0, 35, 1),
+  ('AirPods ProX',   8999.0,  40, 3),
+  ('Magic Keyboard I',1999.0, 10, 3);

@@ -3,6 +3,9 @@ package com.example.demo.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.model.Product;
@@ -48,5 +51,13 @@ public class ProductService {
 	
 	public List<Product> findMysqlAvailableByCategory(String category){
 		return dao.findMysqlAvailableByCategory(category);
+	}
+	
+	//分頁查詢
+	public Page<Product> findPaged(int page, int size, String sortBy)
+	{
+		return dao.findAll(
+				PageRequest.of(page, size,Sort.by(sortBy).descending())
+				);
 	}
 }

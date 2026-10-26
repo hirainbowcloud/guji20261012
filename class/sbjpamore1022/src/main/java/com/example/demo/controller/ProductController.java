@@ -3,12 +3,14 @@ package com.example.demo.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.ProductService;
@@ -70,4 +72,15 @@ public class ProductController {
 	 public ResponseEntity<List<Product>> getMysqlByCategoryPrice(@PathVariable String ct){
 	    	    return ResponseEntity.ok(srv.findMysqlAvailableByCategory(ct));
 	 }
+	 
+	// GET /api/products/page?page=0&size=5&sortBy=price
+	 @GetMapping("/page")
+	 public Page<Product> getPage(
+			 @RequestParam(defaultValue = "0") int page,
+			 @RequestParam(defaultValue = "3") int size,
+			 @RequestParam(defaultValue = "price") String sortBy)
+			 {
+		 		return srv.findPaged(page, size, sortBy);
+			 }
+			 
 }
