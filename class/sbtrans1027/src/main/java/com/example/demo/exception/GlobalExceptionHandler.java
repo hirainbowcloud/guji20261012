@@ -15,6 +15,21 @@ import java.util.Map;
 // 攔截所有 Controller 拋出的例外，統一轉換成 JSON 錯誤回應
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+	
+	// AI提供: 捕獲：資料庫約束違反（如：資料庫欄位 Unique 重複、資料太長等）
+	@ExceptionHandler(org.springframework.dao.DataIntegrityViolationException.class)
+	public ResponseEntity<Map<String, Object>> handleDataIntegrity(
+	        org.springframework.dao.DataIntegrityViolationException e) {
+	// 這裡通常是資料庫層級的重複或格式錯誤，歸類為 400 Bad Request
+	    return buildError(HttpStatus.BAD_REQUEST, "資料操作違反約束（例如名稱已重複或資料格式不符）");
+	}
+
+	// AI提供:  捕獲：事務提交失敗（有時 Jpa 驗證錯誤會包在這層）
+	@ExceptionHandler(org.springframework.transaction.TransactionSystemException.class)
+	public ResponseEntity<Map<String, Object>> handleTransactionSystem(
+	        org.springframework.transaction.TransactionSystemException e) {
+	    return buildError(HttpStatus.BAD_REQUEST, "事務提交失敗，請檢查資料正確性");
+	}
 
     // 捕獲：商品不存在（404）
     @ExceptionHandler(ProductNotFoundException.class)
