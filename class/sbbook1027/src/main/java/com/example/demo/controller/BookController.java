@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dao.BookService;
 import com.example.demo.dto.*;
+import com.example.demo.exception.BookNotFoundException;
 import com.example.demo.model.Book;
 
 import jakarta.validation.Valid;
@@ -37,9 +38,12 @@ public class BookController {
     // GET /api/books/{id}
     @GetMapping("/{id}")
     public ResponseEntity<Book> getById(@PathVariable Long id) {
-        return service.findById(id)
+//        return service.findById(id)
+//                .map(ResponseEntity::ok)
+//                .orElse(ResponseEntity.notFound().build());
+    	return service.findById(id)
                 .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+                .orElseThrow(() -> new BookNotFoundException(id) );
     }
 //    @PostMapping
 //    public ResponseEntity<Book> create(@RequestBody Book book) {
