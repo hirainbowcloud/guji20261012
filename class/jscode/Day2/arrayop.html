@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>  
+    <script>
+        var arr = [];
+        function addHead(){
+            var element = prompt("請輸入要加入頭部的元素");
+            arr.unshift(element);
+            show();
+        }
+        function addTail(){
+            var element = prompt("請輸入要加入尾部的元素");
+            arr.push(element);
+            show();
+        }
+        function removeHead(){
+            arr.shift(); //移除最前面
+            show();
+        }
+        function removeTail(){
+            arr.pop(); //移除最後面
+            show();
+        }
+        function show(){
+            console.log(arr);
+        }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="addHead()">加入頭部</button>
+   <button onclick="addTail()">加入尾部</button>
+   <button onclick="removeHead()">移除頭部</button>
+   <button onclick="removeTail()">移除尾部</button>
+   <button onclick="show()">顯示陣列</button>
+   
+   
+</body>
+</html>

@@ -1,0 +1,22 @@
+p {
+        color:whitesmoke;        /* 屬性 : 值 */
+        font-size: 18px;       
+        background: #163361;
+}
+
+.mystylepink{
+    color:pink;
+    font-size:14px;
+}
+
+.highlight {
+            color: rgb(112, 239, 80);                
+        }
+
+.big30{
+            font-size: 30px;
+}
+
+#idfirst{
+    color: cadetblue;
+}
