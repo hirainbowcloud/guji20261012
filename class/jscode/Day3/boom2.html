@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+    function openwin() {
+       
+        var sit=[
+            "https://www.yahoo.com.tw",
+            "https:www.google.com.tw",
+            "https:www.msn.com.tw"
+        ]
+        // 0 <=  Math.random < 1
+        // 0 <=  *3          < 3   
+        // 所以,index => 0-2 
+        var index = parseInt(Math.random() * sit.length);
+        location.href = sit[index];
+    }
+    
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="openwin()">開新視窗</button>
+   
+</body>
+</html>

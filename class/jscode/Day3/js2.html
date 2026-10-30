@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charse="UTF-8">
+        <title>Javascript Page</title>
+        <script>
+            var array_insert =()=>{
+                let array = [1,2,3,4,5];
+                let element = prompt("Enter 元素可以是文字數字: ")
+                let position = prompt("Enter 插入Array的位子:");
+                array.splice(position, 0, element)
+                alert("Update array: "+array);
+            };
+        </script>
+    </head>
+    <body>
+        <p>JS Page</p>
+       <button onclick="array_insert()">點擊</button>
+    </body>
+</html>

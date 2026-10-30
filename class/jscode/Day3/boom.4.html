@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+       var key;
+       function saveData() {
+          key = prompt("Enter your name:");
+          let value = prompt("Enter score:");
+          localStorage.setItem(key, value);
+          console.log("key:  " + key + "value: " + value);
+       }
+       function getData() {
+          console.log("getkey: " + key + "getvalue: " + localStorage.getItem(key));
+          alert(localStorage.getItem(key));
+       }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="saveData()">save</button>
+   <button onclick="getData()">get</button>
+   
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+    function createArray() {
+        var students = [
+            {name: "John", score: 80},
+            {name: "Mary", score: 90},
+            {name: "Mike", score: 85}
+        ];
+        console.log(students);
+        return students;
+    }
+    
+    function create() {
+       var students = createArray();       
+       students.push({name: "LaLa", score: 100});
+       console.log("更新後的學生清單：", students);
+       return students;
+    }
+
+    function calc(arry) {
+        // 修改：讓 calc 可以接收傳入的陣列，避免重複呼叫 create() 造成重複 push
+        var ans = arry.reduce((sum, student) =>{ // 參數改為單數 student 較直覺
+            return sum + student.score;
+        }, 0);
+
+        console.log("totalScore: " + ans);
+        return ans;
+    }
+
+    function printStudnet(){
+        
+        var printArray = create();       
+     
+        printArray.forEach(student => {
+            console.log("name: " + student.name);
+            console.log("score: " + student.score);
+        });
+        
+        // 把已經有的 printArray 傳給 calc 計算總分，並用 total 承接
+        var total = calc(printArray);
+        
+        // 印出 total 變數
+        console.log("final totalScore: " + total);
+    }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <button onclick="printStudnet()">點擊</button>
+</body>
+</html>

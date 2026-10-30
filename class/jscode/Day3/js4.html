@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+    // function createObject() {
+    //     var person = {
+    //         name: "John",
+    //         age: 30,
+    //         city: "New York"
+    //     };
+    //     console.log(person);
+    //     return person;  
+    // }
+    // function create() {
+    //     var person=createObject();
+    //     console.log("name: " + person.name);
+    //     console.log("age: " + person.age);
+    //     console.log("city: " + person.city);
+    // }
+
+   var personObj = ()=>
+   {
+    let person = {}
+    person.name="KIKI";
+    person.age="20";
+    person.phone="123456";
+    return person;
+   }
+
+   var printThis = ()=>
+   {
+     let person = personObj();
+     console.log("name : "+ person.name)
+     console.log("age : "+ person.age)
+     console.log("phone: "+ person.phone)
+   }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="printThis()">點擊</button>
+   
+</body>
+</html>

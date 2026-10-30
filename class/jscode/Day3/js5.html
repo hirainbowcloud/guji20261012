@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>    
+    function create() {
+       let data='{"name":"Mary","math":80,"english":90,"chinese":85}';
+       let scoreObj = JSON.parse(data);
+       console.log("data type: " + typeof data);
+       console.log("scoreObj type: " + typeof scoreObj );
+       console.log(scoreObj);
+
+       //JSON.parse
+       //把一個 JSON 格式的「字串（String）」轉換成 JavaScript 的「物件（Object）」
+    }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="create()">點擊</button>
+   
+</body>
+</html>

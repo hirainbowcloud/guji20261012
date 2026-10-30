@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+    var week = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];    
+    function search() {
+        let day = prompt("Enter a day abbreviation (Mon, Tue, Wed, Thu, Fri):");
+        let index = week.indexOf(day);
+        if (index !== -1) {
+            alert("The day " + day + " is at index " + index + " in the week array.");
+        } else {
+            alert("Invalid day abbreviation.");
+        }
+    }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="search()">點擊</button>
+   
+</body>
+</html>

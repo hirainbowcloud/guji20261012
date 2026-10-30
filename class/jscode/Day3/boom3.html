@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>First Javascript Page</title>
+
+        <script>
+            var url="https://msn.com.tw"
+            function navigate(){
+                location.href = url;
+            }
+            function countdown(seconds){
+                let t = seconds*1000;
+                setTimeout(navigate,t);//直接給function名稱
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Welcome to the JS Page</h1>
+        <button onclick="countdown(5)">倒數計時5秒</button>
+    </body>
+    
+</html>

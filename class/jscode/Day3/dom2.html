@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset="UTF-8">
+        <title>First Javascript Page</title>
+        <script>          
+          var images = ["banana.png","grape.png","guava.png","mango.png","orange.png","watermelon.png"]
+        
+          var currentIndex = 0;
+
+          function fruitCircle ()
+          {
+            var imgElement = document.getElementById("fruit");
+
+            var pathString = "/Day3/images/" + images[currentIndex];
+
+            imgElement.src = pathString;
+
+            //讓索引往後推，如果超過陣列長度就循環回到第一張 (0)
+            currentIndex = (currentIndex + 1) % images.length;
+            //百分比符號 % 在程式裡不是算百分比，而是求「相除之後剩下的餘數」
+            // 5 % 2  
+            // 5 除以 2 等於 2 餘 1（所以答案是 1）
+            // 10 % 3 等於 10 除以 3 等於 3 餘 1（所以答案是 1）
+            // 如果左邊的數字比右邊小，答案就會是左邊自己：
+            // 0 % 6  -> 0
+            // 1 % 6  -> 1
+            // 2 % 6  -> 2 
+          }
+
+          window.onload = function () 
+          {
+            return setInterval(fruitCircle,2000);
+          }
+        </script>
+    </head>
+    <body>
+        <h1>Welcome to the JS Page</h1>
+        <img id="fruit" src="/Day3/images/banana.png" width="320px" height="240px">
+    </body>
+</html>

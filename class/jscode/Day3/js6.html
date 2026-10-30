@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+       function test() {
+        let a1 = [1, 2, 3, 4, 5];
+        let a2=a1; //a2與a1記憶體位置會共用同一個
+        var a3=a1.map(x => x * 2);
+        for(let i=0;i<a1.length;i++)
+            a1[i] ++;//此時a2與a1陣列資料同一個
+        a1=[];//此時a1陣列資料清空，記憶體位置變新的
+        console.log("a1: " + a1);
+        console.log("a2: " + a2);
+        console.log("a3: " + a3);
+       }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="test()">點擊</button>
+   
+</body>
+</html>

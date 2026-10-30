@@ -10,7 +10,7 @@ var sq = function(n)
   return n*n;  
 };
 
-//let v2 = rq(6);
+//let v2 = sq(6);
 
 var cube = (n)=> {return n*n*n;};
 //let v3 = cube(3);

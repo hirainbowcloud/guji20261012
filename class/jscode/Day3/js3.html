@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+     var scores = [55, 72, 88, 40, 95];
+     
+     // 1. 將函式改名為 calcTotal（避免與結果變數 total 衝突）
+     var calcTotal = () => {
+        // 2. 加上 return，把運算結果回傳並存入 sumResult 變數中
+        var sumResult = scores.filter(score => score > 60)
+            .map(score => score + 5)
+            .reduce((sum, score) => sum + score, 0);
+            
+        // 3. 顯示正確的變數 sumResult
+        alert("Total: " + sumResult);
+     }
+    </script>
+</head>
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <!-- 4. 觸發的函式名稱要改成新的 calcTotal -->
+    <button onclick="calcTotal()">點擊</button>
+</body>
+</html>

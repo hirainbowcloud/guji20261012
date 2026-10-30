@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset="UTF-8">
+        <title>First Javascript Page</title>
+        <script>
+            var tid;
+            function startTime()
+            {
+                tid = window.setInterval(updateClock, 1000)
+            }
+            function stopTime()
+            {
+                clearInterval(tid);
+            }
+            function updateClock()
+            {
+                let div = document.getElementById("clock")
+                let now = new Date();
+                div.innerText = now.toLocaleTimeString();
+                //div.innerText 是用來讀取或設定 HTML 元素內部「純文字」內容的屬性。
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Welcome to the JS Page</h1>
+        <button onclick="startTime()">開始</button>
+        <button onclick="stopTime()">停止</button>
+        <div id="clock">00:00:00</div>
+    </body>
+</html>
