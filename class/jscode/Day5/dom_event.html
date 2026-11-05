@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>    
+    <script>
+       function triggerAlert(em) {
+           let name = em.getAttribute('data-name');
+           alert("Hello, " + name + "!");
+       }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+  <button onclick="triggerAlert(this);" data-name="Mike">click me</button>
+   <p></p>
+   
+</body>
+</html>

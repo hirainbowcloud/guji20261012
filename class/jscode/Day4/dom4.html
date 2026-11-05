@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        function display() {
+           // 兄弟節點
+          console.log("s1 previousSibling: "+document.getElementById('s1').previousSibling);   // null（沒有前一個）
+          console.log("s2 previousSibling: "+document.getElementById('s2').previousSibling.id); // s1
+          console.log("s1 nextSibling: "+document.getElementById('s1').nextSibling.id);     // s2
+          console.log("s2 nextSibling: "+document.getElementById('s2').nextSibling);        // null
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <button onclick="display()">display node and value</button>
+    <div><span id="s1">s1</span><span id="s2">s2</span></div>
+
+</body>
+
+</html>

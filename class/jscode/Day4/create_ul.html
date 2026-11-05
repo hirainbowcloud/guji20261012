@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        const create = () => {
+            var head = document.getElementById('firstUL');
+            for (var i = 1; i <= 3; i++) {
+                var li01 = document.createElement("li");
+                li01.innerHTML = "顯示的文字 " + i;
+                head.appendChild(li01);
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <button onclick="create()">Create li elements</button>
+    <ul id="firstUL"></ul>
+
+</body>
+
+</html>

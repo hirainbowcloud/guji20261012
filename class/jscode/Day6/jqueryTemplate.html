@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Javascript Page</title>    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Welcome to the JQuery Page</h1>
+    <button id="bt1">First Button</button>
+
+    <script>
+    const btnClick = () => {
+        alert("Button clicked");
+    }
+
+    // 修正：補上 => 符號
+    const start = () => {
+        console.log("hi JQuery");
+        $("#bt1").click(btnClick);
+    }
+
+    $(document).ready(start);
+
+    // jQuery 現代推薦的 ready 與 on 監聽寫法
+    //$(() => {
+    //    console.log("hi JQuery");
+    //    $("#bt1").on("click", btnClick);
+    //});
+    </script>
+</body>
+</html>

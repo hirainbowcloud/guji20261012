@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+       function displayAll() {
+           let all_class = document.querySelectorAll(".test");
+           for (let i = 0; i < all_class.length; i++) {
+               console.log(all_class[i].innerText);
+           }
+       }
+       function displayChild() {
+           let parent = document.querySelector("#parent-id");
+           let child_class = parent.querySelectorAll(".test");
+           for (let i = 0; i < child_class.length; i++) {
+               console.log(child_class[i].innerText);
+           }
+       }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="displayAll()">All Test Class</button>
+   <button onclick="displayChild()">Child Test Class</button>
+   <div id="parent-id">
+        <p>hello word1</p>
+        <p class="test">hello word2</p>
+        <p class="test">hello word3</p>
+    </div>
+    <p class="test">hello word4</p>
+    <p class="test">hello word5</p>
+   
+</body>
+</html>

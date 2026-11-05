@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <style>
+        p{
+            height:20px;
+        }
+    </style>
+    <script>
+        function changeStyle() {
+            var div = document.getElementById('div1');
+            div.style.color = 'red';
+            div.style.backgroundColor = 'yellow';
+            div.style.fontSize = '20px';
+        }
+        function computeStyle() {
+            var p1 = document.getElementById('p1');
+            var style = window.getComputedStyle(p1);
+            console.log('color: ' + style.color);           
+            console.log('height: ' + style.height);
+        }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="changeStyle()">change Style</button>
+   <button onclick="computeStyle()">compute Style</button>
+   <div id="div1">division area</div>
+   <p id="p1" style="color:red">Paragraph1</p>
+</body>
+</html>

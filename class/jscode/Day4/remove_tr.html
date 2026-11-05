@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+  function deleteCurrentRow(btn) {
+    // btn.closest('tr') 會自動往上找到最近的 <tr> 標籤
+    const row = btn.closest('tr');
+    row.remove();
+  }
+</script>
+</head>
+<body>
+
+<table id="myTable">
+  <tr>
+    <td>資料 A</td>
+    <td><button onclick="deleteCurrentRow(this)">刪除</button></td>
+  </tr>
+  <tr>
+    <td>資料 B</td>
+    <td><button onclick="deleteCurrentRow(this)">刪除</button></td>
+  </tr>
+  <tr>
+    <td>資料 C</td>
+    <td><button onclick="deleteCurrentRow(this)">刪除</button></td>
+  </tr>
+</table>
+</body>
+</html>

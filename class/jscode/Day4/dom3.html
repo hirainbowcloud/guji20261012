@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        function display() {
+            var foo = document.getElementById('foo');
+            if (foo.hasChildNodes()) {
+                var children = foo.childNodes;
+
+                for (var i = 0; i < children.length; ++i) {
+
+                    if (children[i].nodeName == '#text') {
+                        continue;
+                    }
+
+                    console.log("node name: " + children[i].nodeName);    // P / SPAN / P
+                    console.log("node value: " + children[i].innerHTML);   // P1 / Span1 / P2
+                    //node name: #text 有換行時，Enter鍵會有#text
+                    //node value: undefined
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <button onclick="display()">display node and value</button>
+    <!-- 標籤之間「不要換行」，子節點才乾淨 ctrl+alt+f-->
+    <div id="foo">
+        <p>P1</p><span>Span1</span>
+        <p>P2</p>
+    </div>
+</body>
+
+</html>

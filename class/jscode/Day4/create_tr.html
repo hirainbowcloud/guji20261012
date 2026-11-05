@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        const create_tb = () => {
+            // 新增表格列
+            var table = document.getElementById('tb1');
+            var newRow = table.insertRow(-1);       // -1 = 加到最後一列
+            var cell1 = newRow.insertCell();
+            cell1.textContent = 'Book Name';
+            var cell2 = newRow.insertCell();
+            cell2.textContent = 'Book Price';
+
+            newRow = table.insertRow(-1);       // -1 = 加到最後一列
+            cell1 = newRow.insertCell();
+            cell1.textContent = 'MYSQL DB';
+            cell2 = newRow.insertCell();
+            cell2.textContent = '500';
+
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <button onclick="create_tb()">Create table rows</button>
+    <ul id="firstUL"></ul>
+    <table id="tb1" border="1" width="50%">
+
+    </table>
+</body>
+
+</html>

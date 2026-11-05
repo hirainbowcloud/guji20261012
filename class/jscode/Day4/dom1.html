@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        function old() {
+         let div=document.getElementById("div1");
+         let paragraphs=document.getElementsByTagName("p"); //僅接受標籤名稱
+         let cls_span=document.getElementsByClassName("test1");
+         console.log(div.innerText);
+         console.log(paragraphs[0].innerText);
+         console.log(paragraphs[1].innerText);
+         console.log(cls_span[0].innerText);
+         console.log(cls_span[1].innerText);
+        }
+        function new_name(){
+            let div=document.querySelector("#div1");
+            let paragraphs=document.querySelectorAll("p"); //接受任意合法的 CSS 選擇器（如 'div.item > p'）
+            let cls_span=document.querySelectorAll(".test1");
+            console.log(div.innerText);
+            console.log(paragraphs[0].innerText);
+            console.log(paragraphs[1].innerText);
+            console.log(cls_span[0].innerText);
+            console.log(cls_span[1].innerText);
+        }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="old()">OLD Style Naming</button>
+   <button onclick="new_name()">NEW Style Naming</button>
+   <div id="div1">division area</div>
+   <p>Paragraph1</p>
+   <p>Paragraph2</p>
+   <span class="test1">span test1</span>
+   <span class="test1">span test2</span>
+   
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+    const remove_ul = () => {
+        const ul = document.getElementById('firstUL');
+        // 將 HTMLCollection 轉為陣列後走訪
+        const items = Array.from(ul.children);
+
+        items.forEach(li => {
+            if (Number(li.innerText) < 60) {
+            ul.removeChild(li);
+            }
+        });
+    };
+  function deleteCurrentRow(btn) {
+    // btn.closest('tr') 會自動往上找到最近的 <tr> 標籤
+    const row = btn.closest('tr');
+    row.remove();
+  }
+</script>
+</head>
+<body>
+
+    <button onclick="remove_ul()">remove li element</button>
+    <!-- removeChild：移除子節點，並回傳被移除的元素 -->
+    <ul id="firstUL"><li>60</li><li>70</li><li>50</li><li>40</li><li>90</li></ul>
+
+<table id="myTable">
+  <tr>
+    <td>資料 A</td>
+    <td><button onclick="deleteCurrentRow(this)">刪除</button></td>
+  </tr>
+  <tr>
+    <td>資料 B</td>
+    <td><button onclick="deleteCurrentRow(this)">刪除</button></td>
+  </tr>
+  <tr>
+    <td>資料 C</td>
+    <td><button onclick="deleteCurrentRow(this)">刪除</button></td>
+  </tr>
+</table>
+</body>
+</html>

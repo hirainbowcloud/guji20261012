@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <form>
+        <!-- required：必填 -->
+        <input id="contactNo" name="contactNo" type="tel" 
+           placeholder="Enter your phone number" required="required" />
+
+        <!-- pattern：正規表示法格式驗證 -->
+        <input id="orderRef" name="orderRef" type="text" pattern="[0-9]{2}[A-Z]{3}" required="required"
+            title="2 digits and 3 uppercase letters" />
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>
