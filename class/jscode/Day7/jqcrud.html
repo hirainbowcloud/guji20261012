@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Javascript Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>    
+</head>
+
+<body>
+    <h1>Welcome to the JQuery Page</h1>
+    <form action="javascript:alert('Form submitted!');" method="post">
+        <input type="button" value="List" id="listBtn">     
+        <input type="button" value="Add" id="addBtn">
+        <input type="button" value="Save Update" id="updateBtn">
+        <p>     
+        <label for="pid">Person ID:</label>
+        <input type="text" id="pid" name="pid" value="1"><br><br>
+        <label for="name">Person Name:</label>
+        <input type="text" id="name" name="name" value="John Doe"><br><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="john.doe@example.com"><br><br>
+                   
+    </form>
+    <table border="0" id="personTB" width="30%">        
+    </table>
+    <script src="./js/ajaxcode.js"></script>
+</body>
+
+</html>
