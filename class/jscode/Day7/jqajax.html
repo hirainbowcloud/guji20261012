@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Javascript Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Welcome to the JQuery Page</h1>
+    <form action="javascript:alert('Form submitted!');" method="post">       
+        <input type="submit" value="Submit">
+    </form>
+    <table border="0" id="personTB" width="30%">        
+    </table>
+    <script>
+        const executeForm = (e) => {
+            e.preventDefault();
+
+            $.ajax({
+                url: 'http://localhost:8080/api/getAll' ,
+                type: 'get',
+                dataType: 'json',                            // 伺服器回傳格式                
+                data: '',
+                statusCode: {                    
+                    200: function () { alert("List<Person> Data OK"); },
+                    204: function () { alert("NO Data"); },
+                    400: function () { alert("Bad Request"); },
+                    404: function () { alert("Page Not Found!"); },
+                    500: function (xhr, statusText, err) {
+                        alert(xhr.responseText);
+                    }
+                },
+                success: function (result) {
+                    let tbody = $("#personTB");
+                    tbody.attr("border", "1");
+                    tbody.empty();
+                    tbody.append("<tr><th>ID</th><th>Name</th><th>Email</th></tr>");
+                    $.each(result, function (index, person) {
+                        tbody.append("<tr><td>" + (index+1) + "</td><td>" + person.name + "</td><td>" + person.email + "</td></tr>");
+                    });
+                }
+            });
+
+        };
+        const start = () => {
+            console.log("Hello from JQuery");
+            $("form").submit(executeForm);
+        };
+
+        $(document).ready(start);
+    </script>
+</body>
+
+</html>

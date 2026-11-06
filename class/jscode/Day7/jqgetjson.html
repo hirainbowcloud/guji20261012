@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Javascript Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Welcome to the JQuery Page</h1>
+   
+    姓名：<label id="name"> </label><br>        
+    信箱：<label id="email"> </label>
+    <hr>
+
+    <div id="user-list"></div>
+          
+    <script>
+       
+        const executeForm = (e) => {
+            $.ajax({
+                url: 'http://localhost:8080/api/getAll',
+                type: 'get',
+                dataType: 'json',                            // 伺服器回傳格式
+                contentType: 'application/x-www-form-urlencoded;charset=UTF-8',  
+                
+                success: function (result) {
+                    //alert(JSON.stringify(result)); 
+                    console.log("result:"+result)
+                    console.log("JSON.stringify(result):"+JSON.stringify(result))
+                    $("#name").text(result[0].name);   // 顯示第一筆 Mary
+                    $("#email").text(result[0].email); // 顯示 Mary@example.com                          // result 是 json 物件
+                
+                    // 先把容器內容清空，避免重複載入
+                    $("#user-list").empty();
+                    
+                    // 使用 jQuery 迴圈遍歷陣列中的每一筆資料
+                    $.each(result, function(index, user) {
+                        // 動態組合 HTML 字串
+                        let userHtml = "<p>姓名：" + user.name + " ｜ 信箱：" + user.email + "</p>";
+                        
+                        // 依序附加（append）到容器內
+                        $("#user-list").append(userHtml);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    // 建議加上 error 區塊，若後端沒開或連不上時，這裡會跳出通知協助除錯
+                    console.error("連線失敗：" + error);
+                }
+            });
+
+        };
+ 
+        const start = () => {  
+           executeForm();
+        };
+
+        $(document).ready(start);
+    </script>
+</body>
+
+</html>

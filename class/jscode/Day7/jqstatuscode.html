@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Javascript Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <h1>Welcome to the JQuery Page</h1>
+    <form action="javascript:alert('Form submitted!');" method="post">
+        <label for="Code">Status Code:</label>
+        <input type="text" id="myCode" name="Code" value="200"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        const executeForm = (e) => {
+            e.preventDefault();
+
+            $.ajax({
+                url: 'http://localhost:8080/api/statuscode/' + $("#myCode").val(),
+                type: 'get',
+                dataType: 'text',                            // 伺服器回傳格式                
+                data: '',
+                statusCode: {                    
+                    200: function () { alert("OK"); },
+                    400: function () { alert("Bad Request"); },
+                    404: function () { alert("Page Not Found!"); },
+                    500: function (xhr, statusText, err) {
+                        alert(xhr.responseText);
+                    }
+                },
+                success: function (result) {
+                    console.log(result);                         
+                }
+            });
+
+        };
+        const start = () => {
+            console.log("Hello from JQuery");
+            $("form").submit(executeForm);
+        };
+
+        $(document).ready(start);
+    </script>
+</body>
+
+</html>
