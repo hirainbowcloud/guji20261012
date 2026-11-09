@@ -1,0 +1,1047 @@
+# Unit 2 — React 核心概念（Core Concepts）
+
+> **學習目標**：完成本單元後，你能夠用 JSX 建立元件、用 Props 傳遞資料、用 useState 管理狀態、用 useEffect 串接 API。  
+> **預估時間**：8–12 小時  
+> **程度**：初學者（需完成 Unit 1）
+
+---
+
+## 本單元學習地圖
+
+| 主題 | 學習內容 | 對應章節 |
+|------|---------|---------|
+| JSX 語法 | 與 HTML 的差異、`{}` 嵌入表達式、條件 / 列表渲染 | 2.1 |
+| 元件（Component） | 函式元件、Props、Children、PropTypes | 2.2 |
+| 狀態管理 | `useState`、陣列 / 物件更新、受控元件 | 2.3 |
+| 副作用 | `useEffect`、依賴陣列、API 資料擷取、Cleanup | 2.4 |
+
+> 💡 **學習心法**：本單元是 React 的「心臟」。先求看懂 JSX 長什麼樣，再動手做元件，最後把 state 與 effect 串起來。
+
+> 🚀 **實際動手（Vite 測試專案）**：本單元所有概念都有對應的**可執行互動 Demo**，請參考 `react_demos/unit2-app/`（Vite + React 專案）。執行 `npm install` 後以 `npm run dev` 啟動，即可在瀏覽器中逐個點擊「測試」每節範例，並對照 `src/demos/` 下的原始碼學習。
+
+---
+
+## 2.1 JSX 語法（JavaScript XML）
+
+### 概念說明
+JSX 是 JavaScript 的語法擴充，讓你可以在 JS 檔案中直接撰寫「類似 HTML」的標記語言。瀏覽器看不懂 JSX，由 Babel 編譯轉換成真正的 JavaScript。
+
+```
+你寫的 JSX              →    Babel 編譯後的 JS
+<h1>Hello</h1>          →    React.createElement('h1', null, 'Hello')
+```
+
+---
+
+### JSX 與 HTML 的差異
+
+| HTML | JSX | 說明 |
+|------|-----|------|
+| `class` | `className` | `class` 是 JS 保留字 |
+| `for` | `htmlFor` | `for` 是 JS 保留字 |
+| `onclick` | `onClick` | 事件名稱改為 camelCase |
+| `<br>` | `<br />` | 標籤必須關閉 |
+| `style="color:red"` | `style={{ color: 'red' }}` | 樣式用物件傳遞 |
+
+```jsx
+// ❌ HTML 寫法（在 JSX 中錯誤）
+<div class="card" onclick="handleClick()">
+  <label for="email">Email</label>
+  <input type="text">
+</div>
+
+// ✅ JSX 正確寫法
+<div className="card" onClick={handleClick}>
+  <label htmlFor="email">Email</label>
+  <input type="text" />
+</div>
+```
+
+---
+
+### 嵌入 JavaScript 表達式 `{}`
+
+用大括號 `{}` 在 JSX 中插入任何 JavaScript **表達式**（會回傳值的程式碼）。
+
+```jsx
+const name = "Alice";
+const price = 99.9;
+const isLoggedIn = true;
+
+function App() {
+  return (
+    <div>
+      {/* 插入變數 */}
+      <h1>Hello, {name}!</h1>
+
+      {/* 數學運算 */}
+      <p>含稅價格：{price * 1.05} 元</p>
+
+      {/* 呼叫函式 */}
+      <p>{name.toUpperCase()}</p>
+
+      {/* 三元運算子 */}
+      <p>{isLoggedIn ? "已登入" : "請登入"}</p>
+    </div>
+  );
+}
+```
+
+預期輸出：
+```
+Hello, Alice!
+含稅價格：104.895 元
+ALICE
+已登入
+```
+
+> ⚠️ `{}` 只能放**表達式**，不能放 `if`、`for` 等陳述式（Statements）。
+
+---
+
+### 條件渲染（Conditional Rendering）
+
+JSX 的 `{}` 裡不能直接寫 `if`，改用以下三種方式：
+
+```jsx
+// 方法1：三元運算子（有 else）
+{isLoggedIn ? <h1>歡迎回來，{username}！</h1> : <h1>請先登入</h1>}
+
+// 方法2：&& 短路運算（只有 if，沒有 else）
+{isLoggedIn && <button>登出</button>}
+```
+
+```jsx
+// 方法3：提前 return（適合「整個畫面」切換，最直覺）
+function UserGreeting({ isLoggedIn, username }) {
+  if (!isLoggedIn) {
+    return <h1>請先登入</h1>;
+  }
+  return <h1>歡迎回來，{username}！</h1>;
+}
+```
+
+**完整可執行範例**（`useState` 在 2.3 會詳細說明）：
+
+```jsx
+import { useState } from 'react';
+
+function UserGreeting({ isLoggedIn, username }) {
+  // 方法3：提前 return（登入狀態不同，整個畫面就不同）
+  if (!isLoggedIn) {
+    return <h1>請先登入</h1>;
+  }
+  return <h1>歡迎回來，{username}！</h1>;
+}
+
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    <div>
+      {/* 方法3：提前 return 的結果 */}
+      <UserGreeting isLoggedIn={isLoggedIn} username="小明" />
+
+      {/* 方法2：&& 短路運算（登入後才顯示登出按鈕） */}
+      {isLoggedIn && <button>登出</button>}
+
+      {/* 方法1：三元運算子（切換按鈕的文字） */}
+      <button onClick={() => setIsLoggedIn(prev => !prev)}>
+        目前{isLoggedIn ? "已登入" : "未登入"}，點我切換
+      </button>
+    </div>
+  );
+}
+
+export default App;
+```
+---
+
+### 列表渲染（List Rendering）
+
+用 `.map()` 把陣列轉成 JSX 陣列，並為每個項目加上唯一的 `key`。
+
+```jsx
+const fruits = ["蘋果", "香蕉", "芒果"];
+
+function FruitList() {
+  return (
+    <ul>
+      {fruits.map((fruit, index) => (
+        // 純文字陣列沒有 id 可用時，暫時用 index（見下方「更好的做法」）
+        <li key={index}>{fruit}</li>
+      ))}
+    </ul>
+  );
+}
+
+// ✅ 更好的做法：資料有唯一 id 時，優先使用 id 當 key（資料增刪時才不會錯位）
+const products = [
+  { id: 1, name: "iPhone", price: 999 },
+  { id: 2, name: "MacBook", price: 1999 },
+];
+
+function ProductList() {
+  return (
+    <ul>
+      {products.map(product => (
+        <li key={product.id}>
+          {product.name} — ${product.price}
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
+預期畫面（`FruitList`）：
+```
+• 蘋果
+• 香蕉
+• 芒果
+```
+（`ProductList` 同理會渲染出 iPhone 與 MacBook 兩列）
+
+#### ⚠️ key 的重要性
+```jsx
+// ❌ 不要用 index 當 key（會導致效能問題和 bug）
+{items.map((item, index) => <li key={index}>{item}</li>)}
+
+// ✅ 用唯一且穩定的 id
+{items.map(item => <li key={item.id}>{item.name}</li>)}
+```
+
+> **現在試試看**：建立一個 `colors` 陣列，用 `.map()` 渲染成一個 `<ul>` 列表。
+
+---
+
+## 2.2 元件（Component）
+
+### 概念說明
+元件是 React 的基本組成單位，像「積木」一樣可以組合、重用。每個元件就是一個**回傳 JSX 的函式**。
+
+```
+App
+├── Header
+│   └── NavBar
+├── Main
+│   ├── ProductList
+│   │   └── ProductCard（重複使用多次）
+│   └── Sidebar
+└── Footer
+```
+
+---
+
+### 函式元件（Function Component）
+
+元件就是一個「回傳 JSX 的函式」，名稱必須**大寫開頭**（React 靠這個分辨元件與 HTML 標籤）。
+
+```jsx
+// 寫法 A：函式宣告（Function Declaration）
+function Welcome() {
+  return <h1>歡迎來到 React 世界！</h1>;
+}
+
+// 寫法 B：箭頭函式（Arrow Function）
+const WelcomeArrow = () => <h1>歡迎來到 React 世界！</h1>;
+
+// 兩種寫法都可以；注意變數名稱不能重複宣告，所以箭頭版用不同名稱
+
+// 在其他元件中使用（像 HTML 標籤一樣，可以重複使用）
+function App() {
+  return (
+    <div>
+      <Welcome />        {/* 寫法 A */}
+      <WelcomeArrow />   {/* 寫法 B */}
+    </div>
+  );
+}
+
+export default App;
+```
+
+---
+
+### Props 傳遞與接收
+
+Props（Properties）是從父元件傳給子元件的資料，**單向流動，子元件不能直接修改 props**。
+
+```jsx
+// 子元件：接收 props
+function ProductCard({ name, price, inStock }) {
+  return (
+    <div className="card">
+      <h2>{name}</h2>
+      <p>價格：${price}</p>
+      {inStock ? <span>有庫存</span> : <span>缺貨中</span>}
+    </div>
+  );
+}
+
+// 父元件：傳遞 props（像 HTML 屬性一樣）
+function App() {
+  return (
+    <div>
+      <ProductCard name="iPhone 16" price={999} inStock={true} />
+      <ProductCard name="AirPods Pro" price={249} inStock={false} />
+    </div>
+  );
+}
+```
+
+#### Props 的各種類型
+```jsx
+<MyComponent
+  text="字串直接寫"          // string
+  count={42}               // number — 要用 {}
+  isActive={true}          // boolean — 要用 {}
+  isActive                 // 等同於 isActive={true}（簡寫）
+  style={{ color: 'red' }} // 物件 — 兩層 {}，外層是 JSX，內層是物件
+  onClick={handleClick}    // 函式
+  items={[1, 2, 3]}        // 陣列
+/>
+```
+
+---
+
+### Children Props
+
+```jsx
+// 使用 children 讓元件包裹任意內容
+function Card({ title, children }) {
+  return (
+    <div className="card">
+      <h2>{title}</h2>
+      <div className="card-body">
+        {children}  {/* 渲染被包裹的內容 */}
+      </div>
+    </div>
+  );
+}
+
+// 使用：把內容放在開合標籤之間
+function App() {
+  return (
+    <Card title="使用者資訊">
+      <p>姓名：Alice</p>
+      <p>Email：alice@example.com</p>
+      <button>編輯</button>
+    </Card>
+  );
+}
+```
+
+---
+
+### Props 型別驗證（PropTypes）
+
+```bash
+npm install prop-types
+```
+
+```jsx
+import PropTypes from 'prop-types';
+
+function ProductCard({ name, price, inStock }) {
+  return (
+    <div className="card">
+      <h2>{name}</h2>
+      <p>價格：${price}</p>
+      {inStock ? <span>有庫存</span> : <span>缺貨中</span>}
+    </div>
+  );
+}
+
+// 定義 props 的型別和必填
+ProductCard.propTypes = {
+  name: PropTypes.string.isRequired,     // 必填字串
+  price: PropTypes.number.isRequired,    // 必填數字
+  inStock: PropTypes.bool,               // 選填布林
+};
+
+// 設定預設值
+ProductCard.defaultProps = {
+  inStock: true,
+};
+```
+
+> **現在試試看**：建立一個 `UserCard` 元件，接收 `name`、`age`、`avatar`（圖片網址）三個 props 並顯示出來。
+
+---
+
+## 2.3 狀態管理（State）— `useState`
+
+### 概念說明
+Props 是從外部傳入的資料（唯讀），State 是元件**內部自己管理的資料**（可變）。當 state 改變，React 會自動重新渲染（Re-render）元件。
+
+```
+Props  → 由父元件傳入，子元件唯讀
+State  → 元件自己擁有，可以修改，修改後觸發重新渲染
+```
+
+---
+
+### `useState` Hook 基礎
+
+```jsx
+import { useState } from 'react';
+
+function Counter() {
+  // useState(初始值) 回傳 [目前值, 更新函式]
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>計數：{count}</p>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <button onClick={() => setCount(count - 1)}>-1</button>
+      <button onClick={() => setCount(0)}>重置</button>
+    </div>
+  );
+}
+```
+
+---
+
+### ⚠️ 不可直接修改 state
+
+```jsx
+// ❌ 錯誤：直接修改不會觸發重新渲染
+// （而且 count 是 const，直接指派其實會直接拋錯）
+const [count, setCount] = useState(0);
+count = count + 1;   // 永遠不要這樣做！
+
+// ✅ 正確：透過 setter 函式更新
+setCount(count + 1);
+
+// ✅ 更安全的寫法：用函式形式確保拿到最新值（涉及非同步更新時）
+setCount(prevCount => prevCount + 1);
+```
+
+---
+
+### 陣列與物件 state 的更新
+
+```jsx
+import { useState } from 'react';
+
+// ===== 物件 State =====
+function ProfileForm() {
+  const [user, setUser] = useState({ name: "", email: "" });
+
+  const handleNameChange = (e) => {
+    // ✅ 用展開運算子保留其他欄位，只更新需要的
+    setUser({ ...user, name: e.target.value });
+  };
+
+  return (
+    <input value={user.name} onChange={handleNameChange} />
+  );
+}
+
+// ===== 陣列 State（每筆資料帶唯一 id，讓 key 有穩定值）=====
+function TodoList() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: "買咖啡" },
+    { id: 2, text: "學 React" },
+  ]);
+
+  // 新增（展開運算子產生新陣列）
+  const addTodo = (text) => {
+    setTodos([...todos, { id: Date.now(), text }]); // ✅
+  };
+
+  // 刪除（用 filter 產生新陣列）
+  const removeTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id)); // ✅
+  };
+
+  // 更新（用 map 產生新陣列）
+  const updateTodo = (id, newText) => {
+    setTodos(
+      todos.map((todo) => (todo.id === id ? { ...todo, text: newText } : todo)) // ✅
+    );
+  };
+
+  return (
+    <ul>
+      {todos.map((todo) => (
+        <li key={todo.id}>
+          {todo.text}
+          <button onClick={() => removeTodo(todo.id)}>刪除</button>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export default TodoList;
+```
+
+---
+
+### 表單與受控元件（Controlled Component）
+
+「受控元件」指的是表單元素的值由 React state 控制，每次輸入都觸發 `onChange`。
+
+```jsx
+import { useState } from 'react';
+
+function LoginForm() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 阻止頁面重整
+    console.log("送出：", { email, password });
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          value={email}               // 由 state 控制值
+          onChange={(e) => setEmail(e.target.value)}  // 輸入時更新 state
+          placeholder="請輸入 Email"
+        />
+      </div>
+      <div>
+        <label htmlFor="password">密碼</label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button type="submit">登入</button>
+    </form>
+  );
+}
+
+export default LoginForm;
+```
+
+> **現在試試看**：實作一個 Todo List，包含「新增」輸入框和「刪除」按鈕功能。
+
+---
+
+## 2.4 副作用（Side Effects）— `useEffect`
+
+### 概念說明
+副作用（Side Effects）指的是元件渲染以外的操作，例如：
+- 呼叫 API 取得資料
+- 訂閱事件（鍵盤、視窗大小）
+- 直接操作 DOM
+- 設定計時器（setTimeout / setInterval）
+
+`useEffect` 讓你在**渲染完成後**執行這些操作。
+
+---
+
+### `useEffect` 基礎語法
+
+```jsx
+import { useState, useEffect } from 'react';
+
+useEffect(() => {
+  // 副作用程式碼（渲染後執行）
+  
+  return () => {
+    // 清除函式（Cleanup）— 元件卸載或重新執行前呼叫
+  };
+}, [依賴陣列]); // 空陣列 = 只執行一次
+```
+
+---
+
+### 依賴陣列（Dependency Array）的三種模式
+
+```jsx
+// 1. 沒有依賴陣列 → 每次渲染後都執行（通常不需要）
+useEffect(() => {
+  console.log("每次渲染後都執行"); // 每次渲染後都會重複印出
+});
+
+// 2. 空依賴陣列 [] → 只在元件「掛載（Mount）」時執行一次
+useEffect(() => {
+  console.log("只執行一次，適合初始化 API 呼叫"); // 整份檔案只印出一次
+}, []);
+
+// 3. 有依賴值 → 依賴值改變時才執行
+useEffect(() => {
+  console.log(`userId 改變了，重新載入資料：${userId}`); // userId 每改變一次就印出一次
+}, [userId]); // userId 改變時才執行
+```
+
+---
+
+### 實戰範例：API 資料擷取（Data Fetching）
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function UserList() {
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    // 定義非同步函式（useEffect 的 callback 本身不能是 async）
+    async function fetchUsers() {
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users');
+        
+        if (!response.ok) {
+          throw new Error(`HTTP 錯誤：${response.status}`);
+        }
+        
+        const data = await response.json();
+        setUsers(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchUsers();
+  }, []); // 空依賴陣列 → 只在掛載時執行一次
+
+  // 渲染不同狀態
+  if (loading) return <p>載入中...</p>;
+  if (error) return <p>錯誤：{error}</p>;
+
+  return (
+    <ul>
+      {users.map(user => (
+        <li key={user.id}>{user.name} — {user.email}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default UserList;
+```
+---
+### 加入 input userId state + useEffect userId
+```jsx
+ const [user, setUser] = useState({});
+ const [userId, setUserId] = useState(1); // 新增 state 來追蹤使用者 ID
+  useEffect(() => {
+        // 定義非同步函式（useEffect 的 callback 本身不能是 async）
+        async function fetchUserById(userId) {
+            try {
+                const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP 錯誤：${response.status}`);
+                }
+
+                const data = await response.json();
+                setUser(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchUserById(userId);
+    }, [userId]);
+
+<label htmlFor="userId">使用者 ID：</label>
+            <input
+                id="userId"
+                type="number"
+                value={userId}
+                onChange={(e) => setUserId(Number(e.target.value))}
+            />
+<span>使用者名稱：{user.name}</span>
+
+```
+### 清除副作用（Cleanup Function）
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function Timer() {
+  const [seconds, setSeconds] = useState(0);
+
+  useEffect(() => {
+    // 設定計時器
+    const intervalId = setInterval(() => {
+      setSeconds(prev => prev + 1);
+    }, 1000);
+
+    // 清除函式：元件卸載時清除計時器，避免記憶體洩漏（Memory Leak）
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []); // 只設定一次
+
+  return <p>已計時：{seconds} 秒</p>;
+}
+
+// 另一個範例：訂閱視窗大小
+function WindowSize() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+
+    // 清除：移除事件監聽器
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return <p>視窗寬度：{width}px</p>;
+}
+
+export default Timer;
+```
+
+#### ⚠️ 常見錯誤
+```jsx
+// 錯誤1：useEffect 依賴陣列中遺漏依賴值（ESLint 會警告）
+useEffect(() => {
+  fetchData(userId); // userId 被使用了
+}, []);             // ❌ 應加入 [userId]
+
+// 錯誤2：在 useEffect 中直接用 async
+useEffect(async () => { // ❌ 不要這樣做
+  const data = await fetchData();
+}, []);
+
+// ✅ 正確做法：在 useEffect 內定義 async 函式再呼叫
+useEffect(() => {
+  async function load() {
+    const data = await fetchData();
+  }
+  load();
+}, []);
+```
+
+> **現在試試看**：建立一個 `PostDetail` 元件，根據傳入的 `postId` prop，呼叫 `https://jsonplaceholder.typicode.com/posts/{postId}` 取得文章資料並顯示。當 `postId` 改變時，重新載入資料。
+
+---
+
+## 綜合實作練習
+
+### 任務：使用者搜尋功能
+
+結合本單元所有概念，完成以下元件：
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function UserSearch() {
+  const [users, setUsers] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadUsers() {
+      try {
+        setLoading(true);
+        setError(null);
+        const res = await fetch('https://jsonplaceholder.typicode.com/users');
+        if (!res.ok) throw new Error(`HTTP 錯誤：${res.status}`);
+        const data = await res.json();
+        if (!cancelled) setUsers(data);
+      } catch (err) {
+        if (!cancelled) setError(err.message);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    loadUsers();
+    // Cleanup：防止元件卸載後才回傳資料 → 對已卸載元件 setState
+    return () => { cancelled = true; };
+  }, []);
+
+  // 根據 searchTerm 過濾使用者（「衍生資料」，直接計算即可，不需再存 state）
+  const filteredUsers = users.filter(user =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (loading) return <p>載入中...</p>;
+  if (error) return <p>錯誤：{error}</p>;
+
+  return (
+    <div>
+      <input
+        type="text"
+        placeholder="搜尋使用者..."
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+      <ul>
+        {filteredUsers.map(user => (
+          <li key={user.id}>
+            <strong>{user.name}</strong> — {user.email}
+          </li>
+        ))}
+        {filteredUsers.length === 0 && <p>找不到符合的使用者</p>}
+      </ul>
+    </div>
+  );
+}
+
+export default UserSearch;
+```
+
+> 💡 這裡用 `async/await` + `try/catch` 完整處理錯誤（`res.ok` 檢查、`error` state、cleanup），與 2.4 的 `UserList` 範例一致。搜尋是「衍生資料」：直接對 `users` 過濾即可，不需要另外存一個 state。
+
+---
+### 新增文字輸入跟useEffect結合
+```
+const [user, setUser] = useState({});
+const [userId, setUserId] = useState(1); // 新增 state 來追蹤使用者 ID
+<label htmlFor="userId">使用者 ID：</label>
+            <input
+                id="userId"
+                type="number"
+                value={userId}
+                onChange={(e) => setUserId(Number(e.target.value))}
+            />
+<span>使用者名稱：{user.name}</span>
+useEffect(() => {
+        // 定義非同步函式（useEffect 的 callback 本身不能是 async）
+        async function fetchUserById(userId) {
+            try {
+                const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP 錯誤：${response.status}`);
+                }
+
+                const data = await response.json();
+                setUser(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        fetchUserById(userId);
+    }, [userId]);
+```
+## 重點整理（Key Takeaways）
+
+### 快速複習表
+
+| 主題 | 一句話重點 |
+|------|-----------|
+| JSX | 類似 HTML 的 JS 語法；`class`→`className`、`for`→`htmlFor`、事件名 camelCase、標籤必須關閉 |
+| `{}` | 只能放「表達式」（有回傳值的程式碼），不能放 `if` / `for` 等陳述式 |
+| 條件渲染 | 三元運算子（有 else）；`&&` 短路（只有 if）；提前 `return`（複雜情況） |
+| 列表渲染 | `.map()` 產生 JSX；`key` 要唯一且穩定（用 id，別用 index） |
+| Props | 父傳子的唯讀資料，單向流動；可傳字串 / 數字 / 物件 / 函式 / children |
+| `useState` | `[值, setter]`；用 setter 更新，不能直接改 state 變數 |
+| `useEffect` | 渲染後執行副作用；依賴陣列 `[]` = 只執行一次；要寫 cleanup |
+
+### 難點詳解（Confusing Points）
+
+#### 1. 為什麼列表的 `key` 不建議用 index？
+
+React 靠 `key` 判斷「哪些項目是同一個」。用 index 當 key 時，如果陣列中間插入或刪除項目，React 會**認錯項目**，導致狀態或畫面錯亂。
+
+```jsx
+// 原本：["A", "B", "C"]，key = index 0,1,2
+// 刪除 "A" 之後 → ["B", "C"]，B 現在 index 0
+// React 以為「index 0」還是同一個元素 → 錯誤地保留 A 的狀態
+```
+
+實務上用資料自己的唯一欄位（如 `id`、`uuid`）最保險。
+
+#### 2. 為什麼更新 state 一定要「產生新物件」？
+
+React 用「參考是否改變」判斷是否重新渲染。直接改原物件（`obj.x = 1`）參考沒變，React 不會偵測到更新，畫面就不會變。
+
+```jsx
+// ❌ 直接改：參考沒變，不觸發重新渲染
+user.name = "Bob";
+setUser(user);
+
+// ✅ 產生新物件：參考變了，React 偵測到並重新渲染
+setUser({ ...user, name: "Bob" });
+```
+
+> 陣列同理：用 `[...arr]`、`.filter()`、`.map()` 產生新陣列，不要用 `push()` / `splice()` 改原陣列。
+
+#### 3. `useEffect` 依賴陣列到底怎麼運作？
+
+| 依賴陣列 | 執行時機 |
+|---------|---------|
+| 無 | 每次渲染後都執行 |
+| `[]` | 只在「掛載」時執行一次（初始化 API 呼叫） |
+| `[dep]` | `dep` 改變時才執行 |
+| 回傳 cleanup | 元件卸載、或依賴值改變再次執行「前」呼叫 |
+
+> ⚠️ 依賴陣列中「使用了但漏寫」的變數，是 ESLint 最常見的警告來源。
+
+---
+
+## 互動式練習題（Hands-On Practice）
+
+> 每題都有「提示」與「參考實作」。請**先自己動手做**，卡住再看提示，最後才對答案。
+
+### 練習 1：把 HTML 改成 JSX（⭐⭐ 基礎）
+
+**目標**：以下程式碼含有多處 JSX 錯誤，請改成正確的 JSX。（注意：`<input type="checkbox" checked>` 中的 `checked` 是合法的 JSX 布林簡寫，等同 `checked={true}`，不需要修改。）
+
+```jsx
+<div class="card" onclick="handleClick()">
+  <label for="email">Email</label>
+  <input type="text">
+  <input type="checkbox" checked>
+</div>
+```
+
+**提示**：
+- `class` → `className`、`for` → `htmlFor`
+- `onclick="..."` 字串 → `onClick={函式}`
+- 單標籤 `<input>` 要自閉合 `<input />`
+
+<details>
+<summary>點我看參考實作</summary>
+
+```jsx
+<div className="card" onClick={handleClick}>
+  <label htmlFor="email">Email</label>
+  <input type="text" />
+  <input type="checkbox" checked />
+</div>
+```
+
+</details>
+
+### 練習 2：Props + 列表渲染建立商品卡（⭐⭐⭐ 中階）
+
+**目標**：建立一個 `ProductCard` 元件，接收 `product` prop，並在 `ProductList` 中用 `.map()` 渲染商品清單（注意 `key`）。
+
+**提示**：
+- `ProductCard` 用 `{ product }` 解構接收
+- `ProductList` 內用 `products.map(p => <ProductCard key={p.id} product={p} />)`
+
+<details>
+<summary>點我看參考實作</summary>
+
+```jsx
+function ProductCard({ product }) {
+  return (
+    <div className="card">
+      <h3>{product.name}</h3>
+      <p>${product.price}</p>
+      {product.inStock ? <span>有庫存</span> : <span>缺貨中</span>}
+    </div>
+  );
+}
+
+function ProductList() {
+  const products = [
+    { id: 1, name: "iPhone", price: 999, inStock: true },
+    { id: 2, name: "AirPods", price: 249, inStock: false },
+  ];
+
+  return (
+    <div>
+      {products.map(product => (
+        <ProductCard key={product.id} product={product} />
+      ))}
+    </div>
+  );
+}
+```
+
+</details>
+
+### 練習 3：`useState` + `useEffect` 建立文章詳情頁（⭐⭐⭐⭐ 進階）
+
+**目標**：建立 `PostDetail` 元件，接收 `postId` prop，掛載時呼叫 API 取得文章，並在 `postId` 改變時重新載入。
+
+```jsx
+// API：https://jsonplaceholder.typicode.com/posts/{postId}
+```
+
+**提示**：
+- `useState` 管理 `post`、`loading`
+- `useEffect` 依賴 `[postId]`，內部用 `async function` + `fetch`
+- 載入中顯示「載入中...」，失敗顯示錯誤
+
+<details>
+<summary>點我看參考實作</summary>
+
+```jsx
+import { useState, useEffect } from 'react';
+
+function PostDetail({ postId }) {
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchPost() {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${postId}`
+        );
+        if (!res.ok) throw new Error(`HTTP 錯誤：${res.status}`);
+        const data = await res.json();
+        setPost(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchPost();
+  }, [postId]); // postId 改變時重新載入
+
+  if (loading) return <p>載入中...</p>;
+  if (error) return <p>錯誤：{error}</p>;
+
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+    </div>
+  );
+}
+
+export default PostDetail;
+```
+
+</details>
+
+---
+
+## 單元小測驗
+
+1. JSX 中 `className` 對應 HTML 的哪個屬性？為什麼要改名？
+2. 為何列表渲染中的 `key` 不應該用陣列 index？
+3. Props 和 State 的最大差異是什麼？
+4. `useState` 為什麼不能直接修改 state 變數？
+5. `useEffect` 依賴陣列為空 `[]` 時，副作用何時執行？
+
+---
+
+## 里程碑 ✅
+
+- [ ] 能用 JSX 正確撰寫條件渲染和列表渲染
+- [ ] 能建立接收 Props 的函式元件並重用
+- [ ] 能用 `useState` 管理表單輸入和動態列表
+- [ ] 能用 `useEffect` 在元件掛載時呼叫 API
+- [ ] 完成「使用者搜尋功能」綜合實作

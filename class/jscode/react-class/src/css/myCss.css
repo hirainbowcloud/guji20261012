@@ -1,0 +1,7 @@
+.card {
+  border: 1px solid #ccc;  /* 灰色實線邊框 */
+  border-radius: 8px;       /* 圓角 */
+  padding: 16px;            /* 內距，文字不貼邊 */
+  margin: 16px 0;           /* 外距 */
+  max-width: 400px;         /* 卡片最大寬度，避免整頁拉長 */
+}
