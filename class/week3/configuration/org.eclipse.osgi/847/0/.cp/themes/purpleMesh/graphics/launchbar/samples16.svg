@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg10728"
+   width="16"
+   height="16"
+   viewBox="0 0 16 16"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <metadata
+     id="metadata10734">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs10732">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter11344"
+       x="-0.58800002"
+       width="2.176"
+       y="-0.58800002"
+       height="2.176">
+      <feGaussianBlur
+         stdDeviation="1.4695099"
+         id="feGaussianBlur11346" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter11344-9"
+       x="-0.58800002"
+       width="2.176"
+       y="-0.58800002"
+       height="2.176">
+      <feGaussianBlur
+         stdDeviation="1.4695099"
+         id="feGaussianBlur11346-3" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter11344-9-1"
+       x="-0.58800002"
+       width="2.176"
+       y="-0.58800002"
+       height="2.176">
+      <feGaussianBlur
+         stdDeviation="1.4695099"
+         id="feGaussianBlur11346-3-4" />
+    </filter>
+  </defs>
+  <circle
+     style="opacity:1;fill:#ffd580;fill-opacity:1;stroke:#fc9b06;stroke-width:1.00199997;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path11310"
+     cx="8.5"
+     cy="10.5"
+     r="2.9989998" />
+  <circle
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.94837046;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter11344)"
+     id="path11310-8"
+     cx="27.999001"
+     cy="18.999001"
+     r="2.9989998"
+     transform="matrix(-0.06658058,0.45186441,-0.57287012,-0.08441032,20.728776,-1.2692257)" />
+  <path
+     style="opacity:1;fill:#61b4e6;stroke:#3b4fa8;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="m 1,5.909526 3.5,2.644 3,-2 V 2.994204 l -3,-1.440678 -3.5,1.644 z"
+     id="path11393" />
+  <circle
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.38630319;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter11344-9)"
+     id="path11310-8-0"
+     cx="27.999001"
+     cy="18.999001"
+     r="2.9989998"
+     transform="matrix(-0.05276737,0.38008625,-0.45401897,-0.07100183,15.575176,-4.3208941)" />
+  <path
+     style="fill:none;stroke:#3c52aa;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.98431373"
+     d="m 4.5,8.5 v -3 L 7.5273339,3.568545"
+     id="path11397" />
+  <path
+     style="fill:none;stroke:#3d52aa;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.99607843"
+     d="m 4.5,8.5 v -3 L 1.472666,3.568545"
+     id="path11397-2" />
+  <path
+     style="opacity:1;fill:#92db3d;stroke:#66b004;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="M 8.0043493,6.0648954 13.004348,8.7246931 15.347072,5.1780157 11.559856,1.7246931 Z"
+     id="path11414" />
+  <path
+     style="fill:none;stroke:#66b004;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="M 13.004348,8.7246931 11.347072,2.1780157"
+     id="path11416" />
+  <circle
+     style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.95295882;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;filter:url(#filter11344-9-1)"
+     id="path11310-8-0-4"
+     cx="27.999001"
+     cy="18.999001"
+     r="2.9989998"
+     transform="matrix(-0.26786206,0.04496586,-0.09686361,-0.41358213,22.848912,11.718431)" />
+</svg>
