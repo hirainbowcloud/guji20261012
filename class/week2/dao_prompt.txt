@@ -1,0 +1,12 @@
+1. 根據Supplier Entity 製作SupplierDAO Interface程式宣告
+2.
+  1.   根據SupplierDAO Interface實作程式 
+  2.   連線MySQL  user=root password=1234
+
+3. 
+    1. 根據 SupplierDAOImpl 程式中 findAll() 讀取所有 Supplier資料
+    2. 製作 Controller  Servlet程式 將findAll() 取得所有資料 轉送給JSTL viewsupplier.jsp畫面
+
+4.
+   1. 根據 SupplierDAOImpl 程式中 insert(Supplier) 新增 Supplier資料
+    2. 製作 Controller  Servlet程式 將 insert(Supplier) 新增 所需的html畫面 新增完成後再轉接findAll() 取得所有資料 轉送給JSTL viewsupplier.jsp畫面

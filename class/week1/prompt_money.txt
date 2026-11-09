@@ -1,0 +1,11 @@
+1. 製作HTML 表單名稱 money.html
+2. 輸入金額欄位名稱 money
+3. action執行後端程式 MoneyServlet
+
+
+1. 輸入金額變數 money
+2. money<=5000 不打折
+3. 5001<=money <=10000 打9折
+4. 10001<=money <=20000 打85折
+5. 20001<=money 打8折
+6. 寫一個discount方法計算打折後金額

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        document.onkeydown = function (event) {
+            if (event.keyCode === 89 && event.ctrlKey) {   // ctrl + y
+                alert('你同時按下 "control + y"');
+            } else if (event.which === 90 && event.ctrlKey) {  // ctrl + z
+                alert('你同時按下 "control + z"');
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+
+
+</body>
+
+</html>

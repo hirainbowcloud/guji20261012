@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="8"
+   height="8"
+   id="svg2"
+   version="1.1"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient4234">
+      <stop
+         style="stop-color:#1d1407;stop-opacity:1"
+         offset="0"
+         id="stop4236" />
+      <stop
+         style="stop-color:#51391d;stop-opacity:1"
+         offset="1"
+         id="stop4238" />
+    </linearGradient>
+    <linearGradient
+       xlink:href="#linearGradient4234"
+       id="linearGradient4240"
+       x1="5"
+       y1="1052.3622"
+       x2="5"
+       y2="1045.3622"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       xlink:href="#linearGradient4234"
+       id="linearGradient4240-3"
+       x1="5"
+       y1="1052.3622"
+       x2="5"
+       y2="1045.3622"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(0,-1044.3622)">
+    <rect
+       style="display:inline;fill:#543830;fill-opacity:1;stroke:url(#linearGradient4240);stroke-width:1;stroke-opacity:1"
+       id="rect4244"
+       width="6"
+       height="6.0000172"
+       x="1.5"
+       y="1045.8622" />
+    <image
+       y="1044.3622"
+       x="-9"
+       id="image4196"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAIxJREFU GJVj/P//PwM+wMLAwMAQZCWHUxUTAwMDw49ffxmY/wszMP8XZlh5cCOc/eP3X4iCbz//MCw7NA9F 57JD8xi+/vjDwPj//38GE1Xh/4oiciiKouySGB68ecjA8P//fwZNWd7/v36d+x9iYYBCa8ny/oe7 IcouCcWKKLskhh+//kKskBPlwOkLACs7Ra5OcGMCAAAAAElFTkSuQmCC "
+       style="image-rendering:optimizeSpeed"
+       preserveAspectRatio="none"
+       height="8"
+       width="8" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#faface;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 4.5,1046.3622 0,5"
+       id="path4199" />
+    <rect
+       style="display:inline;fill:none;fill-opacity:1;stroke:url(#linearGradient4240-3);stroke-width:1;stroke-opacity:1"
+       id="rect4244-5"
+       width="6"
+       height="6.0000172"
+       x="1.5"
+       y="1045.8622" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#faface;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6,1048.8622 -3,0"
+       id="path4199-4" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#faface;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 3,1047.8622 -1,0"
+       id="path4199-4-7" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#faface;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 3,1049.8622 -1,0"
+       id="path4199-4-7-3" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#faface;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 7,1047.8622 -1,0"
+       id="path4199-4-7-9" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#faface;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 7,1049.8622 -1,0"
+       id="path4199-4-7-0" />
+  </g>
+</svg>

@@ -1,0 +1,22 @@
+{       
+        "state": "TW",
+        "street": "Kung Yuan Road",
+        "supId": 1,
+        "supName": "Gjun Coffee Co.,",
+        "zip": "10001",
+        "city": "Taipei",
+        "coffees": [
+            {
+                "cofName": "Coffee A1",
+                "price": 9.99,
+                "sales": 10,
+                "total": 50               
+            },
+            {
+                "cofName": "Coffee A2",
+                "price": 3.99,
+                "sales": 9,
+                "total": 19               
+            }
+        ]
+    }

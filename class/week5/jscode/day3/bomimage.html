@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+       var tid;
+       var images=["images/banana.png","images/grape.png","images/mango.png","images/orange.png","images/watermelon.png"];
+       var index=0;
+       function startTime() {
+          tid = window.setInterval(updateImage, 3000);
+       }
+       function stopTime() {
+          clearInterval(tid);
+       }
+       function updateImage() {
+          let img=document.getElementById("fruit");
+          index=(index+1)%images.length;
+          img.src=images[index];
+          
+       }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="startTime()">開始</button>
+   <button onclick="stopTime()">停止</button>
+   <img src="images/banana.png" id="fruit" width="320px" height="240px"/>
+</body>
+</html>

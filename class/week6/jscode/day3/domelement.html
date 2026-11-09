@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+       function one_element() {
+          let element = document.getElementById("myElement");
+          alert(element.innerText);
+       }
+       function update_element() {
+          let element = document.getElementById("myElement");
+          element.innerText = prompt("Enter new text for the element:");
+       }
+       function many_element() {
+          let elements = document.getElementsByTagName("div");
+          let text = "";
+          for (let i = 0; i < elements.length; i++) {
+              text += elements[i].innerText + "\n";
+              console.log("elements[" + i + "].innerText: " + elements[i].innerText);
+          }
+          alert(text);
+       }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="one_element()">取得id元素</button>
+   <button onclick="update_element()">更新id元素</button>
+   <button onclick="many_element()">取得多個元素</button>
+   <p id="myElement">這是一個段落元素</p>
+   <div>div1</div>
+   <div>div2</div>
+   <div>div3</div>
+</body>
+</html>

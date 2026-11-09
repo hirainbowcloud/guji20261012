@@ -1,0 +1,15 @@
+ {
+        "name": "Food", 
+        "products": [
+            {
+                "name": "Apple Juice",
+                "price": 59.0,
+                "stock": 10                
+            },
+            {
+                "name": "Bread",
+                "price": 79.0,
+                "stock": 20                
+            }
+        ]
+ }

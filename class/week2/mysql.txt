@@ -1,0 +1,71 @@
+INSERT INTO classicmodels.employees
+(employeeNumber,lastName,firstName,extension,email,officeCode,reportsTo,jobTitle)
+VALUES
+(1800,'Lee','Mary','0x123','mary@test.com',10,1143,'Sales Rep.');
+
+
+set autocommit=0;
+delete from classicmodels.employees
+where employeeNumber=1800;
+rollback;
+set autocommit=1;
+
+
+
+set autocommit=0;
+
+INSERT INTO classicmodels.orders
+(orderNumber,orderDate,requiredDate,shippedDate,status,comments,customerNumber)
+VALUES
+(10500,'2026-01-01','2026-06-01',null,'In-Processing',null,119);
+
+INSERT INTO classicmodels.orderdetails
+(orderNumber,productCode,quantityOrdered,priceEach,orderLineNumber)
+VALUES
+(10500,'S10_1678',10,1.99,1);
+
+rollback;
+set autocommit=1;
+
+
+select ofc.officeCode,ofc.city,ofc.phone,ofc.addressLine1 ,
+       emp.employeeNumber,emp.firstName,emp.email,emp.jobTitle  
+from classicmodels.offices as ofc 
+inner join classicmodels.employees as emp
+on ofc.officeCode=emp.officeCode
+
+
+select cst.customerNumber,cst.contactFirstName,cst.phone,
+ord.orderNumber ,ord.orderDate,ord.status,ord.requiredDate,
+det.productCode,det.priceEach
+from classicmodels.customers as cst
+inner join classicmodels.orders as ord
+on cst.customerNumber=ord.customerNumber
+inner join classicmodels.orderdetails as det
+on ord.orderNumber=det.orderNumber
+order by cst.customerNumber
+
+
+select cst.customerNumber,cst.contactFirstName,cst.phone,
+ord.orderNumber ,ord.orderDate,ord.status,ord.requiredDate
+from classicmodels.customers as cst
+left join classicmodels.orders as ord
+on cst.customerNumber=ord.customerNumber
+where ord.orderNumber is null
+order by cst.customerNumber
+
+
+SELECT  emp1.employeeNumber,emp1.firstName,emp1.jobTitle , emp2.employeeNumber,emp2.firstName,emp2.jobTitle
+FROM classicmodels.employees as emp1
+inner join classicmodels.employees as emp2
+on emp1.reportsTo=emp2.employeeNumber
+
+
+SELECT orderNumber ,productCode ,quantityOrdered , priceEach , quantityOrdered*priceEach as subtotal
+FROM classicmodels.orderdetails
+where ordernumber=10100;
+
+SELECT orderNumber ,sum(quantityOrdered*priceEach) as total
+FROM classicmodels.orderdetails
+where ordernumber=10100
+group by orderNumber

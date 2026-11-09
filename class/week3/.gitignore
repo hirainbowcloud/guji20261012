@@ -1,0 +1,22 @@
+# Compiled class file
+*.class
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Build
+.settings/
+target/
+build/
+out/
+
+# OS
+.DS_Store
+Thumbs.db

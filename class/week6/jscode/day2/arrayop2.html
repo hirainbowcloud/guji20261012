@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        function op(){
+            let arr = [];
+            for(var i=1;i<=10;i++){
+               let element = parseInt(Math.random() * 10)+1;
+               arr.push(element);               
+            }
+            console.log(arr);
+            let x=arr[0];
+            let index=arr.indexOf(x);
+            console.log("First element to remove:", x);
+            while(index !== -1){
+                arr.splice(index, 1);
+                index = arr.indexOf(x);
+            }
+            console.log("Array after removal:", arr);
+        }
+    </script>   
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="op()">操作移除</button>
+   
+   
+</body>
+</html>

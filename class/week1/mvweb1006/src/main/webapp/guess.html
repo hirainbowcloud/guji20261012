@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>猜數字遊戲</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 50px; }
+        .container { max-width: 400px; margin: 0 auto; text-align: center; }
+        input[type="text"] { padding: 10px; margin: 10px; width: 100px; }
+        input[type="submit"] { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 猜數字遊戲</h1>
+        <p>我想了一個 1 到 10 之間的數字，你能猜中嗎？</p>
+        <form action="Fortune.jsp" method="post">
+            <label for="number">請輸入您的猜測 (1-10)：</label><br/>
+            <input type="text" name="number" id="number" required /><br/>
+            <input type="submit" name="submit" value="開始猜測" />
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+        window.onload = function() {
+            document.getElementById('myForm').onsubmit = validateForm;
+        };
+        function validateForm(event) {
+            var contactNo = document.getElementById('contactNo').value;
+            if (!contactNo) {
+                alert('Please enter your phone number.');
+                event.preventDefault();
+                
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to the JS Page</h1>
+    <form id="myForm" action="javascript:alert('傳送成功')" >
+        <!-- required：必填 -->
+        <input id="contactNo" name="contactNo" type="tel"  placeholder="Enter your phone number" />
+       
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+
+</html>

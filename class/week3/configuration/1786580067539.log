@@ -1,0 +1,363 @@
+!SESSION 2026-08-13 08:14:27.389 -----------------------------------------------
+eclipse.buildId=4.40.0.20260604-0652
+java.version=21.0.11
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=zh_TW
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2026-08-13 08:14:33.829
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.linuxtools.docker.core 4 0 2026-08-13 08:14:34.397
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.linuxtools.docker.core [1099]
+  Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+    -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+       org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+              org.glassfish.jersey.core.jersey-client [1168]
+                Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                     org.glassfish.jersey.core.jersey-common [1169]
+                       Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+         Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+  Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+    -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+       org.glassfish.jersey.containers.jersey-container-servlet [1166]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+           -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+  Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+    -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+  Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+    -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.eclipse.linuxtools.docker.ui 4 0 2026-08-13 08:14:34.399
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.eclipse.linuxtools.docker.ui [1102]
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="1.0.0"
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+       org.eclipse.linuxtools.docker.core [1099]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+           -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+              org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+                     org.glassfish.jersey.core.jersey-client [1168]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                            org.glassfish.jersey.core.jersey-common [1169]
+                              Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+              org.glassfish.jersey.containers.jersey-container-servlet [1166]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.glassfish.jersey.core.jersey-common 4 0 2026-08-13 08:14:34.399
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.glassfish.jersey.core.jersey-common [1169]
+  Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.jboss.tools.openshift.cdk.server 4 0 2026-08-13 08:14:34.426
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.jboss.tools.openshift.cdk.server [1309]
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="[5.0.0,6.0.0)"
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+       org.eclipse.linuxtools.docker.core [1099]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+           -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+              org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+                     org.glassfish.jersey.core.jersey-client [1168]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                            org.glassfish.jersey.core.jersey-common [1169]
+                              Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+              org.glassfish.jersey.containers.jersey-container-servlet [1166]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+       org.jboss.tools.openshift.core [1313]
+         Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core
+           -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.common.ui
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.common.ui; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+       org.jboss.tools.openshift.common.ui [1312]
+         Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core
+           -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.ui; bundle-version="3.1.0"
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.ui; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+       org.jboss.tools.openshift.ui [1317]
+         Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.ui; bundle-version="[5.0.0,6.0.0)"
+           -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.ui; bundle-version="5.12.0.202309052024"; singleton:="true"
+              org.eclipse.linuxtools.docker.ui [1102]
+                Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="1.0.0"
+                  -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.common.ui; bundle-version="[3.0.0,4.0.0)"
+           -> Bundle-SymbolicName: org.jboss.tools.openshift.common.ui; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core; bundle-version="[3.0.0,4.0.0)"
+           -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+         Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="[5.0.0,6.0.0)"
+           -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.jboss.tools.openshift.common.ui 4 0 2026-08-13 08:14:34.433
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.jboss.tools.openshift.common.ui [1312]
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+       org.jboss.tools.openshift.core [1313]
+         Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core
+           -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+              org.eclipse.linuxtools.docker.core [1099]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+                  -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+                     org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+                            org.glassfish.jersey.core.jersey-client [1168]
+                              Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                                -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                                   org.glassfish.jersey.core.jersey-common [1169]
+                                     Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                              Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                                -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+                     org.glassfish.jersey.containers.jersey-container-servlet [1166]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.jboss.tools.openshift.core 4 0 2026-08-13 08:14:34.433
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.jboss.tools.openshift.core [1313]
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+       org.eclipse.linuxtools.docker.core [1099]
+         Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+           -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+              org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+                     org.glassfish.jersey.core.jersey-client [1168]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                            org.glassfish.jersey.core.jersey-common [1169]
+                              Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+                Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+              org.glassfish.jersey.containers.jersey-container-servlet [1166]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+                  -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+         Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+           -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.jboss.tools.openshift.js 4 0 2026-08-13 08:14:34.440
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.jboss.tools.openshift.js [1316]
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core; bundle-version="3.3.2"
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+       org.jboss.tools.openshift.core [1313]
+         Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core
+           -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+              org.eclipse.linuxtools.docker.core [1099]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+                  -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+                     org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+                            org.glassfish.jersey.core.jersey-client [1168]
+                              Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                                -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                                   org.glassfish.jersey.core.jersey-common [1169]
+                                     Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                              Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                                -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+                     org.glassfish.jersey.containers.jersey-container-servlet [1166]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)
+
+!ENTRY org.jboss.tools.openshift.ui 4 0 2026-08-13 08:14:34.445
+!MESSAGE FrameworkEvent ERROR
+!STACK 0
+org.osgi.framework.BundleException: Could not resolve module: org.jboss.tools.openshift.ui [1317]
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.ui; bundle-version="[5.0.0,6.0.0)"
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.ui; bundle-version="5.12.0.202309052024"; singleton:="true"
+       org.eclipse.linuxtools.docker.ui [1102]
+         Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="1.0.0"
+           -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+              org.eclipse.linuxtools.docker.core [1099]
+                Unresolved requirement: Import-Package: org.glassfish.jersey.apache.connector
+                  -> Export-Package: org.glassfish.jersey.apache.connector; bundle-symbolic-name="org.glassfish.jersey.connectors.jersey-apache-connector"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.client,javax.ws.rs.core,org.apache.http.client,org.apache.http.client.methods,org.apache.http.impl.client,org.glassfish.jersey.client,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.util,org.glassfish.jersey.spi"
+                     org.glassfish.jersey.connectors.jersey-apache-connector [1165]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.client.innate; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.client.innate; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.ws.rs.core,org.glassfish.jersey.client"
+                            org.glassfish.jersey.core.jersey-client [1168]
+                              Unresolved requirement: Import-Package: org.glassfish.jersey; version="[2.40.0,3.0.0)"
+                                -> Export-Package: org.glassfish.jersey; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.net.ssl,javax.ws.rs,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util"
+                                   org.glassfish.jersey.core.jersey-common [1169]
+                                     Unresolved requirement: Import-Package: org.glassfish.hk2.osgiresourcelocator; version="[1.0.0,2.0.0)"
+                              Unresolved requirement: Import-Package: org.glassfish.jersey.internal; version="[2.40.0,3.0.0)"
+                                -> Export-Package: org.glassfish.jersey.internal; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.ws.rs,javax.ws.rs.container,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.l10n,org.glassfish.jersey.internal.spi,org.glassfish.jersey.internal.util,org.glassfish.jersey.message,org.glassfish.jersey.model.internal,org.glassfish.jersey.process.internal,org.glassfish.jersey.spi,org.osgi.framework"
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.client; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.client; bundle-symbolic-name="org.glassfish.jersey.core.jersey-client"; bundle-version="2.40.0"; version="2.40.0"; uses:="javax.inject,javax.net.ssl,javax.ws.rs,javax.ws.rs.client,javax.ws.rs.core,javax.ws.rs.ext,org.glassfish.jersey,org.glassfish.jersey.client.inject,org.glassfish.jersey.client.spi,org.glassfish.jersey.internal,org.glassfish.jersey.internal.inject,org.glassfish.jersey.internal.util,org.glassfish.jersey.internal.util.collection,org.glassfish.jersey.message,org.glassfish.jersey.message.internal,org.glassfish.jersey.spi"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.containers.jersey-container-servlet; bundle-version="2.40.0"
+                     org.glassfish.jersey.containers.jersey-container-servlet [1166]
+                       Unresolved requirement: Import-Package: org.glassfish.jersey.internal.l10n; version="[2.40.0,3.0.0)"
+                         -> Export-Package: org.glassfish.jersey.internal.l10n; bundle-symbolic-name="org.glassfish.jersey.core.jersey-common"; bundle-version="2.40.0"; version="2.40.0"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-client; bundle-version="2.40.0"
+                Unresolved requirement: Require-Bundle: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+                  -> Bundle-SymbolicName: org.glassfish.jersey.core.jersey-common; bundle-version="2.40.0"
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.common.ui; bundle-version="[3.0.0,4.0.0)"
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.common.ui; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+       org.jboss.tools.openshift.common.ui [1312]
+         Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core
+           -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+              org.jboss.tools.openshift.core [1313]
+                Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core
+                  -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.jboss.tools.openshift.core; bundle-version="[3.0.0,4.0.0)"
+    -> Bundle-SymbolicName: org.jboss.tools.openshift.core; bundle-version="3.24.100.v20231103-1505"; singleton:="true"
+  Unresolved requirement: Require-Bundle: org.eclipse.linuxtools.docker.core; bundle-version="[5.0.0,6.0.0)"
+    -> Bundle-SymbolicName: org.eclipse.linuxtools.docker.core; bundle-version="5.12.0.202309052024"; singleton:="true"
+
+	at org.eclipse.osgi.container.Module.start(Module.java:495)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel$2.run(ModuleContainer.java:2110)
+	at org.eclipse.osgi.internal.framework.EquinoxContainerAdaptor$1$1.execute(EquinoxContainerAdaptor.java:146)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2101)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.incStartLevel(ModuleContainer.java:2041)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.doContainerStartLevel(ModuleContainer.java:2003)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1915)
+	at org.eclipse.osgi.container.ModuleContainer$ContainerStartLevel.dispatchEvent(ModuleContainer.java:1)
+	at org.eclipse.osgi.framework.eventmgr.EventManager.dispatchEvent(EventManager.java:230)
+	at org.eclipse.osgi.framework.eventmgr.EventManager$EventThread.run(EventManager.java:341)

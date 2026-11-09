@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>First Javascript Page</title>
+    <script>
+      const scores = [55, 72, 88, 40, 95];
+      function array_func() {
+         var total=scores.filter(score => score >= 60)
+         .map(score => score +5)
+         .reduce((sum, score) => sum + score, 0);
+         alert("Total: " + total);
+      }
+    </script>
+</head>
+<body>
+   <h1>Welcome to the JS Page</h1>
+   <button onclick="array_func()">點擊</button>
+   
+</body>
+</html>
