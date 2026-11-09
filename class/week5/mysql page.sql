@@ -1,0 +1,1 @@
+SELECT * FROM classicmodels.products  limit 6,5;

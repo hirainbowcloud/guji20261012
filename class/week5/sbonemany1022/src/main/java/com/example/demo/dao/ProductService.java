@@ -1,0 +1,49 @@
+package com.example.demo.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.model.*;
+import java.util.*;
+
+@Service
+public class ProductService {
+	
+//	final ProductRepository repo;
+//	public ProductService(ProductRepository repo) {
+//		this.repo=repo;
+//	}
+	@Autowired
+	ProductRepository repo;
+	
+	public List<Product> getAll(){
+		return repo.findAll();
+	}
+	
+	public List<Product> findByNameContain(String n){
+		return repo.findByNameContaining(n);
+	}
+	
+	public List<Product> findCategoryByPriceDesc(String category){
+		return repo.findByCategoryOrderByPriceDesc(category);
+	}
+	
+	public List<Product> findAvailableByCategory(String category){
+		return repo.findAvailableByCategory(category);
+	}
+	
+	public List<Product> findMysqlAvailableByCategory(String category){
+		return repo.findMysqlAvailableByCategory(category);
+	}
+	
+	// 分頁查詢（page 從 0 開始，size = 每頁筆數，sortBy = Entity 屬性名稱）
+	public Page<Product> findPaged(int page, int size, String sortBy) {
+	    return repo.findAll(
+	        PageRequest.of(page, size, Sort.by(sortBy).descending())
+	    );
+	}
+}
