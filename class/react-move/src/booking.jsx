@@ -26,7 +26,7 @@ function Booking() {
       })
       .then((data) => {
         setTicketTypes(data.content || []);
-        console.log("票種資料載入成功:", data.content);
+        //console.log("票種資料載入成功:", data.content);
       })
       .catch((err) => console.error("票種 API 錯誤:", err));
   }, []);
